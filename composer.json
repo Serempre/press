@@ -23,10 +23,9 @@
     }
   ],
   "require": {
-    "cviebrock/eloquent-sluggable": "^8.0",
-    "orchid/platform": "^8.0|dev-master"
-  },
-  "require-dev": {
+    "php": "^8.0.2",
+    "cviebrock/eloquent-sluggable": "^9.0",
+    "orchid/platform": "^13.6|dev-master"
   },
   "autoload": {
     "psr-4": {
