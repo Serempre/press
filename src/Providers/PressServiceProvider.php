@@ -56,12 +56,14 @@ class PressServiceProvider extends ServiceProvider
                 ->registerPermissions($this->registerPermissions());
         });
 
-        $this->dashboard->addPublicDirectory('press', PRESS_PATH.'/public/');
+        $this->publishes([
+            PRESS_PATH . '/public' => public_path('vendor/orchid/press'),
+        ], ['press.assets', 'laravel-assets']);
 
-        View::composer('platform::app', function () use ($dashboard) {
-            $dashboard
-                ->registerResource('scripts', orchid_mix('/js/press.js', 'press'))
-                ->registerResource('stylesheets', orchid_mix('/css/press.css', 'press'));
+        View::composer('platform::app', function () {
+            $this->dashboard
+                ->registerResource('scripts', mix('/js/press.js', 'vendor/orchid/press'))
+                ->registerResource('stylesheets', mix('/css/press.css', 'vendor/orchid/press'));
         });
 
         $this->registerMigrations()
